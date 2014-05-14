@@ -22,10 +22,82 @@ Variables:
 Built in stack data structure:
 ```
   Stack st;
+  
+  //puts value on top of the stack
   st.push(45);
+  
+  //removes a value from the top of the stack
   st.pop();
+  
   st.printStack();
   st.stackSort();
+```
+Function declarations:
+```
+  //without parameters
+  #aSampleFunction(){
+   //code goes here
+  }
+  
+  //can have parameters
+  #anotherSample(var1,var2){
+    //do something..
+  }
+  
+  //can return values from functions
+  #finalSample(var1,var2){
+   $x = var1;
+   $y = var2;
+   
+   return x + y;
+  }
+```
+If statements and loops:
+```
+  if(<expression>){
+    //compute
+  }
+  else{
+ 
+  } //optional else
+
+  while(<expression>){
+    //do something..
+  }
+
+  do{
+    //do something..
+  }while(<expression>);
+```
+
+File Manipulation:
+```
+  // creates a text file 
+  CreateFile();
+  
+  // allows you to write to a file
+  WriteToFile();
+  
+  // prints a file to the console
+  ViewFile();
+```
+
+Built in functions:
+```
+  //creates a frame and draws the square to the dimensions given
+  drawSqaure(int1,int2,int3,int4);
+  
+  //creates a frame and draws the circle to the dimensions givem
+  drawCircle(int1,int2,int3,int4);
+  
+  //returns the greatest out of three values
+  $x = GREATEST(val1,val2,val3);
+  
+  //returns the least of three values
+  $x = LEAST(val1,val2,val3);
+  
+  //returns the length of the string
+  $x = LEN("a bunch of characters!");
 ```
 
 
