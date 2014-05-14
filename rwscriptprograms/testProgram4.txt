@@ -1,0 +1,12 @@
+#drawingExample(x,y,h,w){
+
+     drawSquare(x,y,h,w);
+     drawCircle(x,y,h,w);
+
+}
+$locX = 50;
+$locY = 50;
+$height = 200;
+$width = 200;
+
+drawingExample(locX,locY,height,width);

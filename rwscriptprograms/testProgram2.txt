@@ -1,0 +1,13 @@
+$valOne = 1;
+$valTwo = 234;
+$valThree = 65;
+
+// the greatest value will be stored in this variable
+$greatest = GREATEST(valOne,valTwo,valThree);
+
+// the smallest value will be stored in this variable
+$least = LEAST(valOne,valTwo,valThree);
+
+print.ToConsole(greatest);
+print.ToConsole(least);
+

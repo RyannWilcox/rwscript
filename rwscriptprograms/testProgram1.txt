@@ -1,0 +1,26 @@
+
+#populateAndSortStack(max){
+    $i = 0;
+    $x = 0;
+    Stack theStack;
+    while(i <= max){ 
+	input := x;
+	theStack.push(x);
+	i = i + 1;	
+    }
+    theStack.printStack();
+    theStack.stackSort();
+    theStack.printStack();
+}
+
+$max= 3;
+populateAndSortStack(max);
+
+Stack stackTwo;
+stackTwo.push(3);
+stackTwo.push(56);
+stackTwo.push(99);
+stackTwo.push(7);
+stackTwo.printStack();
+stackTwo.pop();
+stackTwo.printStack();

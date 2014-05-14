@@ -1,0 +1,9 @@
+$test = 34+12;
+
+CreateFile(); //creates file of users choice
+
+WriteToFile(test); //writes to file of users choice
+
+ViewFile(); //views file of users choice
+
+WriteToFile(2334);
