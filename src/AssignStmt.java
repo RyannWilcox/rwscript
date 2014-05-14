@@ -1,5 +1,4 @@
 public class AssignStmt extends Stmt{
-	
 	private String variable;
 	public AssignStmt(String var,Expr exp){
 		variable = var;
