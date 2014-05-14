@@ -11,3 +11,21 @@ javac -classpath ../antlr-3.5-complete.jar *.java
 
 To run your script written in rwscript use this at the command line: <br>
 java -classpath .:../antlr-3.5-complete.jar RwscriptMain testProgram1.txt 
+
+
+#### rwscript basic syntax
+Variables:
+```
+  $aVariable;   
+  $aVariable = 5;
+```
+Built in stack data structure:
+```
+  Stack st;
+  st.push(45);
+  st.pop();
+  st.printStack();
+  st.stackSort();
+```
+
+
