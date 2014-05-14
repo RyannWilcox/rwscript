@@ -5,10 +5,8 @@ import javax.swing.*;
 
 public class RwscriptVisitor{
 	private Scanner Input = new Scanner(System.in); // for input Statement
-	
-    private void initializeParameters(ArgList functionParameters, ArgList actualParameters) 
-    throws ReturnValueException{
-        
+	private void initializeParameters(ArgList functionParameters, ArgList actualParameters)
+										throws ReturnValueException{
         // Do both lists have equal parameters?
         if (functionParameters.size() != actualParameters.size()) {
             System.err.println("Error: Parameter lists do not have equal amounts.");
@@ -26,48 +24,48 @@ public class RwscriptVisitor{
 	}
 	
 	public Integer dispatch(AST ast) throws ReturnValueException{
-	if		(ast.getClass() == AssignStmt.class) return interp((AssignStmt)ast);
-	else if	(ast.getClass() == BlockStmt.class) return interp((BlockStmt)ast);
-	else if (ast.getClass() == StmtList.class) return interp((StmtList)ast);
-	else if (ast.getClass() == CallStmt.class) return interp((CallStmt)ast);
-	else if (ast.getClass() == DoWhileStmt.class) return interp((DoWhileStmt)ast);
-    else if (ast.getClass() == DrawingStmt.class) return interp((DrawingStmt)ast);
-    else if (ast.getClass() == FileManipulationStmt.class)
-    									 return interp ((FileManipulationStmt)ast);
-    else if (ast.getClass() == FuncDeclStmt.class) return interp((FuncDeclStmt)ast);
-    else if (ast.getClass() == IfStmt.class) return interp((IfStmt)ast);
-    else if (ast.getClass() == InputStmt.class) return interp((InputStmt)ast);
-    else if (ast.getClass() == PrintStmt.class) return interp((PrintStmt)ast);
-    else if (ast.getClass() == ReturnStmt.class) return interp((ReturnStmt)ast);
-    else if (ast.getClass() == StackDeclStmt.class) return interp((StackDeclStmt)ast);
-    else if (ast.getClass() == StackStmt.class) return interp((StackStmt)ast);
-    else if (ast.getClass() == VarDeclStmt.class) return interp((VarDeclStmt)ast);
-    else if (ast.getClass() == WhileStmt.class) return interp((WhileStmt)ast);
-    else if (ast.getClass() == BinopExpr.class) return interp((BinopExpr)ast);
-    else if (ast.getClass() == BuiltInExpr.class) return interp((BuiltInExpr)ast);
-    else if (ast.getClass() == CallExpr.class) return interp((CallExpr)ast);
-    else if (ast.getClass() == StackExpr.class) return interp((StackExpr)ast);
-    else if (ast.getClass() == NumExpr.class) return interp((NumExpr)ast);
-    else if (ast.getClass() == VarExpr.class) return interp((VarExpr)ast);
-    else{
-    	System.out.println("Error: dispatch cannot find class");
-    	System.exit(1);
-    	return null;
+		if(ast.getClass() == AssignStmt.class) return interp((AssignStmt)ast);
+		else if	(ast.getClass() == BlockStmt.class) return interp((BlockStmt)ast);
+		else if (ast.getClass() == StmtList.class) return interp((StmtList)ast);
+		else if (ast.getClass() == CallStmt.class) return interp((CallStmt)ast);
+		else if (ast.getClass() == DoWhileStmt.class) return interp((DoWhileStmt)ast);
+    	else if (ast.getClass() == DrawingStmt.class) return interp((DrawingStmt)ast);
+    	else if (ast.getClass() == FileManipulationStmt.class)return interp ((FileManipulationStmt)ast);
+    	else if (ast.getClass() == FuncDeclStmt.class) return interp((FuncDeclStmt)ast);
+    	else if (ast.getClass() == IfStmt.class) return interp((IfStmt)ast);
+    	else if (ast.getClass() == InputStmt.class) return interp((InputStmt)ast);
+    	else if (ast.getClass() == PrintStmt.class) return interp((PrintStmt)ast);
+		else if (ast.getClass() == ReturnStmt.class) return interp((ReturnStmt)ast);
+    	else if (ast.getClass() == StackDeclStmt.class) return interp((StackDeclStmt)ast);
+    	else if (ast.getClass() == StackStmt.class) return interp((StackStmt)ast);
+    	else if (ast.getClass() == VarDeclStmt.class) return interp((VarDeclStmt)ast);
+    	else if (ast.getClass() == WhileStmt.class) return interp((WhileStmt)ast);
+    	else if (ast.getClass() == BinopExpr.class) return interp((BinopExpr)ast);
+    	else if (ast.getClass() == BuiltInExpr.class) return interp((BuiltInExpr)ast);
+    	else if (ast.getClass() == CallExpr.class) return interp((CallExpr)ast);
+    	else if (ast.getClass() == StackExpr.class) return interp((StackExpr)ast);
+    	else if (ast.getClass() == NumExpr.class) return interp((NumExpr)ast);
+    	else if (ast.getClass() == VarExpr.class) return interp((VarExpr)ast);
+    	else{
+    		System.out.println("Error: dispatch cannot find class");
+    		System.exit(1);
+    		return null;
 
-    }
+    	}
 	}
     
     /************* 
     ****STATEMENTS
     **************
     */
-        public Integer interp(AssignStmt ast) throws ReturnValueException{
-        //get value to be assigned
+    public Integer interp(AssignStmt ast) throws ReturnValueException{
+   		//get value to be assigned
         Integer assignExpr = this.dispatch(ast.getAST(0));
         //assign the value from above
         RwscriptMain.symbolTable.updateVariable(ast.getLVariable(),assignExpr);
         return null;
     }
+    
     public Integer interp(BlockStmt ast) throws ReturnValueException{
         RwscriptMain.symbolTable.pushScope(); // add new scope
         // interpret statements in the block statement
@@ -89,8 +87,7 @@ public class RwscriptVisitor{
     	RwscriptMain.symbolTable.pushScope();
     	
     	initializeParameters(funcValue.getFParameters(),ast.getActualParameters());
-    	RwscriptMain.symbolTable.getCurrentScope().setParentScope(
-    													funcValue.getParentScope());
+    	RwscriptMain.symbolTable.getCurrentScope().setParentScope(funcValue.getParentScope());
     	
     	//call and execute function
     	this.dispatch(funcValue.getFuncBody());
@@ -201,8 +198,7 @@ public class RwscriptVisitor{
     	break;
     	case FileManipulationStmt.VIEW:
     		try{
-    		System.out.println
-    						("Please type the name of the file you would like to view");
+    		System.out.println("Please type the name of the file you would like to view");
     		String fileN = Input.nextLine();
 			BufferedReader br = new BufferedReader(new FileReader(fileN));
 	 		String line = null;
@@ -285,8 +281,7 @@ public class RwscriptVisitor{
 		switch(funcChosen){
 		case StackStmt.POP:
 			//stack stored in tempStack
-			Stack<Integer> tempStack = RwscriptMain.symbolTable.lookupStack
-																(ast.getName());
+			Stack<Integer> tempStack = RwscriptMain.symbolTable.lookupStack(ast.getName());
 			//popped value stored in val
 			Integer val = new Integer(tempStack.pop());
 			System.out.println("Stack pop ->" + val);
@@ -305,8 +300,7 @@ public class RwscriptVisitor{
 			RwscriptMain.symbolTable.updateStack(ast.getName(),tempStack2);
 		break;
 		case StackStmt.SORT:
-			Stack<Integer> tempStack3 = RwscriptMain.symbolTable.lookupStack
-																	(ast.getName());
+			Stack<Integer> tempStack3 = RwscriptMain.symbolTable.lookupStack(ast.getName());
 			//Stack that will contain sorted values
 			Stack<Integer> sortedStack = new Stack<Integer>();
 			while (!tempStack3.isEmpty()) {
@@ -321,8 +315,7 @@ public class RwscriptVisitor{
 		break;
 		case StackStmt.PRINT:
 			//lookup stack
-			Stack<Integer> tempStack4 = RwscriptMain.symbolTable.lookupStack
-																	(ast.getName());
+			Stack<Integer> tempStack4 = RwscriptMain.symbolTable.lookupStack(ast.getName());
 			System.out.println("Stack print -> "+ tempStack4);
 		break;
 		default:
@@ -439,8 +432,7 @@ public class RwscriptVisitor{
 		SymbolTableScope topStack = RwscriptMain.symbolTable.getCurrentScope();
 		RwscriptMain.symbolTable.pushScope();
 		initializeParameters(funcVal.getFParameters(),ast.getActualParameters());
-		RwscriptMain.symbolTable.getCurrentScope().setParentScope
-															(funcVal.getParentScope());
+		RwscriptMain.symbolTable.getCurrentScope().setParentScope(funcVal.getParentScope());
 		
 		try{
 			this.dispatch(funcVal.getFuncBody());
@@ -458,13 +450,11 @@ public class RwscriptVisitor{
 		int choice = ast.getFunChoice();
 		switch(choice){
 			case StackExpr.STSIZE:
-				Stack<Integer>tempStack = RwscriptMain.symbolTable.lookupStack
-																	(ast.getVarName());
+				Stack<Integer>tempStack = RwscriptMain.symbolTable.lookupStack(ast.getVarName());
 				Integer stackSize = tempStack.size();
 				return stackSize;
 			case StackExpr.POP:
-				Stack<Integer>tempStack2 = RwscriptMain.symbolTable.lookupStack
-																	(ast.getVarName());
+				Stack<Integer>tempStack2 = RwscriptMain.symbolTable.lookupStack(ast.getVarName());
 				Integer stackValue = tempStack2.pop();
 				//stored stackValue is stored in symbol table
 				RwscriptMain.symbolTable.updateStack(ast.getVarName(),tempStack2);
