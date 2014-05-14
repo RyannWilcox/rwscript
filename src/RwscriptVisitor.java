@@ -25,17 +25,17 @@ public class RwscriptVisitor{
 	
 	public Integer dispatch(AST ast) throws ReturnValueException{
 		if(ast.getClass() == AssignStmt.class) return interp((AssignStmt)ast);
-		else if	(ast.getClass() == BlockStmt.class) return interp((BlockStmt)ast);
-		else if (ast.getClass() == StmtList.class) return interp((StmtList)ast);
-		else if (ast.getClass() == CallStmt.class) return interp((CallStmt)ast);
-		else if (ast.getClass() == DoWhileStmt.class) return interp((DoWhileStmt)ast);
+	else if	(ast.getClass() == BlockStmt.class) return interp((BlockStmt)ast);
+	else if (ast.getClass() == StmtList.class) return interp((StmtList)ast);
+	else if (ast.getClass() == CallStmt.class) return interp((CallStmt)ast);
+	else if (ast.getClass() == DoWhileStmt.class) return interp((DoWhileStmt)ast);
     	else if (ast.getClass() == DrawingStmt.class) return interp((DrawingStmt)ast);
     	else if (ast.getClass() == FileManipulationStmt.class)return interp ((FileManipulationStmt)ast);
     	else if (ast.getClass() == FuncDeclStmt.class) return interp((FuncDeclStmt)ast);
     	else if (ast.getClass() == IfStmt.class) return interp((IfStmt)ast);
     	else if (ast.getClass() == InputStmt.class) return interp((InputStmt)ast);
     	else if (ast.getClass() == PrintStmt.class) return interp((PrintStmt)ast);
-		else if (ast.getClass() == ReturnStmt.class) return interp((ReturnStmt)ast);
+	else if (ast.getClass() == ReturnStmt.class) return interp((ReturnStmt)ast);
     	else if (ast.getClass() == StackDeclStmt.class) return interp((StackDeclStmt)ast);
     	else if (ast.getClass() == StackStmt.class) return interp((StackStmt)ast);
     	else if (ast.getClass() == VarDeclStmt.class) return interp((VarDeclStmt)ast);
@@ -170,8 +170,7 @@ public class RwscriptVisitor{
     	break;
     	case FileManipulationStmt.WRITE:
 			try {
-			System.out.println
-							("Please type the name of the file to add content to -> ");
+			System.out.println("Please type the name of the file to add content to -> ");
 			String fName = Input.nextLine();
 			Integer content = this.dispatch(ast.getAST(0));
 			 //content to be added to file
