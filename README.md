@@ -87,7 +87,7 @@ Built in functions:
   //creates a frame and draws the square to the dimensions given
   drawSqaure(int1,int2,int3,int4);
   
-  //creates a frame and draws the circle to the dimensions givem
+  //creates a frame and draws the circle to the dimensions given
   drawCircle(int1,int2,int3,int4);
   
   //returns the greatest out of three values
